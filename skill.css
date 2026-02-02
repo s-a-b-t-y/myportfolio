@@ -1,0 +1,431 @@
+/* CSS Variables for Themes */
+:root {
+    /* Dark Mode (Default - Minimal Dark Luxury) */
+    --bg: #1a1a1a;
+    /* Dark matte */
+    --text: #f0f0f0;
+    /* Soft off-white */
+    --text-muted: #b0b0b0;
+    /* Light gray */
+    --accent: #d4af37;
+    /* Muted gold */
+    --shadow: rgba(0, 0, 0, 0.3);
+    --floating-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    --border-radius: 6px;
+    --transition: all 0.4s ease;
+    --nav-text: #f0f0f0;
+    --nav-hover: #d4af37;
+    --nav-bg: #1a1a1a;
+    --gray: #2a2a2a;
+}
+
+/* Light Mode (Smoky and Cloudy White) */
+body.light-mode {
+    --bg: #f5f5f5;
+    /* Smoky white background */
+    --text: #333333;
+    /* Dark gray text for contrast */
+    --text-muted: #7a7a7a;
+    /* Muted gray for secondary text */
+    --accent: #8a8a8a;
+    /* Soft gray accent for smoky feel */
+    --shadow: rgba(0, 0, 0, 0.1);
+    /* Light shadow for cloudiness */
+    --floating-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    /* Subtle floating shadow */
+    --nav-text: #333333;
+    --nav-hover: #555555;
+    /* Muted hover for smoky effect */
+    --nav-bg: #e8e8e8;
+    /* Cloudy gray nav background */
+    --gray: #d1d1d1;
+    /* Light gray for borders */
+}
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.7;
+    color: var(--text);
+    background: var(--bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    animation: fadeIn 1.2s ease-in;
+    transition: background 0.4s ease, color 0.4s ease;
+    /* Smooth theme transition */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Top Navigation Bar */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--nav-bg);
+    padding: 25px 0;
+    z-index: 1000;
+    transition: transform 0.4s ease, background 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Toggle on left, menu on right */
+}
+
+/* Theme Toggle Slider */
+.theme-toggle {
+    margin-left: 20px;
+    /* Position in left corner */
+}
+
+#theme-switch {
+    display: none;
+    /* Hide checkbox */
+}
+
+.toggle-slider {
+    position: relative;
+    width: 60px;
+    height: 30px;
+    background: var(--text-muted);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
+}
+
+.toggle-slider::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    background: var(--bg);
+    border-radius: 50%;
+    transition: transform 0.4s ease, background 0.4s ease;
+}
+
+#theme-switch:checked+.toggle-slider::before {
+    transform: translateX(30px);
+    /* Slide to right for light mode */
+}
+
+.icon {
+    font-size: 16px;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    position: relative;
+}
+
+.sun {
+    opacity: 0;
+    /* Hidden in dark mode */
+    transform: rotate(0deg);
+}
+
+.moon {
+    opacity: 1;
+    /* Visible in dark mode */
+    transform: rotate(0deg);
+}
+
+#theme-switch:checked+.toggle-slider .sun {
+    opacity: 1;
+    /* Visible in light mode */
+    transform: rotate(360deg);
+    /* Animation to sun */
+}
+
+#theme-switch:checked+.toggle-slider .moon {
+    opacity: 0;
+    /* Hidden in light mode */
+    transform: rotate(-360deg);
+    /* Animation to moon */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    /* Take remaining space */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--nav-text);
+    font-size: 1.15rem;
+    font-weight: 500;
+    padding: 12px 24px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    transition: var(--transition);
+}
+
+nav ul li a:hover {
+    color: var(--nav-hover);
+    transform: translateY(-2px);
+}
+
+nav ul li a:hover::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--nav-hover);
+    animation: underline 0.4s ease forwards;
+}
+
+@keyframes underline {
+    to {
+        width: 85%;
+    }
+}
+
+nav ul li a svg {
+    flex-shrink: 0;
+}
+
+/* Container for centered layout */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 50px 25px;
+    flex: 1;
+    padding-top: 140px;
+}
+
+header {
+    text-align: center;
+    padding: 100px 0;
+    background: var(--bg);
+    margin-bottom: 100px;
+}
+
+header h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block;
+    color: var(--text);
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+header h1::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: var(--transition);
+}
+
+header:hover h1::after {
+    width: 100%;
+}
+
+header p {
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--text-muted);
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+section {
+    flex: 1;
+    min-width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 60px;
+    border-radius: 10px;
+    box-shadow: var(--floating-shadow);
+    transition: var(--transition);
+    backdrop-filter: blur(5px);
+}
+
+section h2 {
+    font-size: 2.7rem;
+    margin-bottom: 35px;
+    color: var(--text);
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 20px;
+    font-weight: 600;
+}
+
+.skill-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+}
+
+.skill-item {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    backdrop-filter: blur(3px);
+}
+
+/* Light Mode Skill Item Greyish Background */
+body.light-mode .skill-item {
+    background: #e0e0e0;
+    /* Greyish color for skill items in light mode */
+}
+
+.skill-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+}
+
+/* Dim Lighting Effect for Dark Theme on Hover (for skill items) */
+body:not(.light-mode) .skill-item:hover {
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(212, 175, 55, 0.4);
+    /* Adds a soft gold glow for dim lighting */
+    filter: brightness(1.05);
+    /* Slight brightness increase for lighting effect */
+}
+
+.skill-item h3 {
+    font-size: 1.6rem;
+    color: var(--text);
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: var(--text-muted);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--accent);
+    transition: width 1.5s ease-in-out;
+}
+
+/* Light Mode Progress Bar Colors */
+body.light-mode .progress-bar {
+    background: #ffffff;
+    /* White for empty part */
+}
+
+body.light-mode .progress-fill {
+    background: #000000;
+    /* Dark black for fill */
+}
+
+.skill-item p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* Add transitions to all elements for smooth theme switch */
+* {
+    transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        padding: 20px 0;
+    }
+
+    .theme-toggle {
+        margin-left: 0;
+        margin-bottom: 10px;
+        align-self: flex-start;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 25px;
+        align-items: center;
+    }
+
+    nav ul li a {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+
+    header h1 {
+        font-size: 2.8rem;
+    }
+
+    header p {
+        font-size: 1.3rem;
+    }
+
+    section {
+        padding: 40px;
+    }
+
+    section h2 {
+        font-size: 2.2rem;
+    }
+
+    .skill-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skill-item {
+        padding: 25px;
+    }
+
+    .container {
+        padding-top: 180px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
