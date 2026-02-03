@@ -287,6 +287,12 @@ section:hover {
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
 }
 
+/* Dark Mode Minimalist Enhancement for Sections #journey and #mindset */
+body:not(.light-mode) #journey,
+body:not(.light-mode) #mindset {
+    border-radius: 0; /* Flat edges for minimalism, matching footer */
+}
+
 footer {
     text-align: center;
     padding: 40px;
