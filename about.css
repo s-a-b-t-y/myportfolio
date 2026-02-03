@@ -1,34 +1,34 @@
 /* CSS Variables for Themes */
 :root {
-    /* Dark Mode (Default - Minimal Dark Luxury) - Unchanged */
-    --bg: #1a1a1a;
-    --text: #f0f0f0;
-    --text-muted: #b0b0b0;
-    --accent: #d4af37;
-    --shadow: rgba(0, 0, 0, 0.3);
-    --floating-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    /* Dark Mode (Minimalist - Simplified from Minimal Dark Luxury) */
+    --bg: #1a1a1a; /* Matte dark background */
+    --text: #f0f0f0; /* Clean off-white text */
+    --text-muted: #b0b0b0; /* Subtle gray */
+    --accent: #d4af37; /* Muted gold, kept minimal */
+    --shadow: rgba(0, 0, 0, 0.2); /* Softer shadow */
+    --floating-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); /* Reduced intensity for minimalism */
     --border-radius: 6px;
     --transition: all 0.4s ease;
     --nav-text: #f0f0f0;
-    --nav-hover: #d4af37;
-    --nav-bg: #1a1a1a;
+    --nav-hover: #d4af37; /* Muted hover */
+    --nav-bg: #1a1a1a; /* Flat nav */
     --gray: #2a2a2a;
 }
 
-/* Light Mode (Glow Lite - Applied to nav, header, footer; Sections reverted to original smoky/cloudy) */
+/* Light Mode (Glow Lite - Unchanged) */
 body.light-mode {
-    --bg: #fafafa; /* Soft off-white for Glow Lite */
-    --text: #2c2c2c; /* Deep gray for Glow Lite */
-    --text-muted: #6b6b6b; /* Muted gray for Glow Lite */
-    --accent: #b19cd9; /* Soft lavender for Glow Lite */
-    --shadow: rgba(0, 0, 0, 0.05); /* Soft shadow for Glow Lite */
-    --floating-shadow: 0 8px 20px rgba(177, 156, 217, 0.1); /* Diffused glow for Glow Lite */
-    --border-radius: 8px; /* Rounded for Glow Lite */
-    --transition: all 0.6s ease; /* Slow transitions for Glow Lite */
+    --bg: #fafafa;
+    --text: #2c2c2c;
+    --text-muted: #6b6b6b;
+    --accent: #b19cd9;
+    --shadow: rgba(0, 0, 0, 0.05);
+    --floating-shadow: 0 8px 20px rgba(177, 156, 217, 0.1);
+    --border-radius: 8px;
+    --transition: all 0.6s ease;
     --nav-text: #2c2c2c;
-    --nav-hover: #8a7ba8; /* Muted lavender hover for Glow Lite */
-    --nav-bg: #f0f0f0; /* Light nav for Glow Lite */
-    --gray: #e0e0e0; /* Subtle gray for Glow Lite */
+    --nav-hover: #8a7ba8;
+    --nav-bg: #f0f0f0;
+    --gray: #e0e0e0;
 }
 
 /* Reset and base styles */
@@ -231,7 +231,7 @@ header h1 {
     position: relative;
     display: inline-block;
     color: var(--text);
-    text-shadow: 0 0 10px rgba(177, 156, 217, 0.2);
+    /* Removed text-shadow for minimalism */
 }
 
 header h1::after {
@@ -265,25 +265,20 @@ main {
 section {
     flex: 1;
     min-width: 450px;
-    background: rgba(255, 255, 255, 0.05); /* Reverted to original for both modes */
+    background: rgba(255, 255, 255, 0.05);
     padding: 60px;
     border-radius: 10px;
     box-shadow: var(--floating-shadow);
     transition: var(--transition);
-    backdrop-filter: blur(5px);
+    /* Removed backdrop-filter for flat minimalism */
 }
 
 section:hover {
-    transform: translateY(-8px); /* Reverted to original hover for both modes */
+    transform: translateY(-8px);
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
 }
 
-/* Dim Lighting Effect for Dark Theme on Hover (for sections with id="journey" and id="mindset") - Unchanged */
-body:not(.light-mode) #journey:hover,
-body:not(.light-mode) #mindset:hover {
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(212, 175, 55, 0.4);
-    filter: brightness(1.05);
-}
+/* Removed dim lighting hover for minimalism - no special effects on #journey and #mindset */
 
 footer {
     text-align: center;
