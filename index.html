@@ -90,18 +90,18 @@
 
     <!-- JavaScript for Theme Toggle and Navbar Hide/Show -->
     <script>
-        // Theme Toggle Functionality
+        // -------- Theme Toggle Functionality --------
         const themeSwitch = document.getElementById('theme-switch');
         const body = document.body;
 
-        // Check for saved theme preference
+        // Load saved theme preference from localStorage
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'light') {
             body.classList.add('light-mode');
             themeSwitch.checked = true;
         }
 
-        // Toggle theme on switch
+        // Toggle theme when switch is changed
         themeSwitch.addEventListener('change', function () {
             if (themeSwitch.checked) {
                 body.classList.add('light-mode');
@@ -112,22 +112,25 @@
             }
         });
 
-        // Navbar Hide/Show on Scroll
+        // -------- Navbar Hide/Show on Scroll --------
         let lastScrollTop = 0;
         const navbar = document.getElementById('navbar');
 
         window.addEventListener('scroll', function () {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
             if (scrollTop > lastScrollTop) {
-                // Scrolling down: Hide navbar
+                // Scrolling down: hide navbar
                 navbar.style.transform = 'translateY(-100%)';
             } else {
-                // Scrolling up: Show navbar
+                // Scrolling up: show navbar
                 navbar.style.transform = 'translateY(0)';
             }
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Handles mobile or negative scrolling
+
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Handles mobile negative scroll
         });
     </script>
+
 </body>
 
 </html>

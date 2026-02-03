@@ -50,7 +50,7 @@ body {
     transition: background 0.4s ease, color 0.4s ease;
 }
 
-/* Top Navigation Bar */
+/* ---------- Navbar Styles (from About Page) ---------- */
 nav {
     position: fixed;
     top: 0;
@@ -65,44 +65,307 @@ nav {
     justify-content: space-between;
 }
 
-/* Hero Section */
-#hero {
+/* Theme Toggle Slider */
+.theme-toggle {
+    margin-left: 20px;
+}
+
+#theme-switch {
+    display: none;
+}
+
+.toggle-slider {
+    position: relative;
+    width: 60px;
+    height: 30px;
+    background: var(--text-muted);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background 0.4s ease;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 120px 0;
-    gap: 50px;
+    padding: 0 5px;
+}
+
+.toggle-slider::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    background: var(--bg);
+    border-radius: 50%;
+    transition: transform 0.4s ease, background 0.4s ease;
+}
+
+#theme-switch:checked+.toggle-slider::before {
+    transform: translateX(30px);
+}
+
+.icon {
+    font-size: 16px;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    position: relative;
+}
+
+.sun {
+    opacity: 0;
+    transform: rotate(0deg);
+}
+
+.moon {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+#theme-switch:checked+.toggle-slider .sun {
+    opacity: 1;
+    transform: rotate(360deg);
+}
+
+#theme-switch:checked+.toggle-slider .moon {
+    opacity: 0;
+    transform: rotate(-360deg);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--nav-text);
+    font-size: 1.15rem;
+    font-weight: 500;
+    padding: 12px 24px;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    transition: var(--transition);
+    border: 1px solid transparent;
+}
+
+nav ul li a:hover,
+nav ul li a:active {
+    color: var(--nav-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(177, 156, 217, 0.15);
+    border-color: rgba(177, 156, 217, 0.3);
+}
+
+nav ul li a:hover::after,
+nav ul li a:active::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--nav-hover);
+    animation: underline 0.6s ease forwards;
+}
+
+@keyframes underline {
+    to {
+        width: 85%;
+    }
+}
+
+nav ul li a svg {
+    flex-shrink: 0;
+}
+
+/* Responsive Navbar for Mobile */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        padding: 20px 0;
+    }
+
+    .theme-toggle {
+        margin-left: 0;
+        margin-bottom: 10px;
+        align-self: flex-start;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 25px;
+        align-items: center;
+    }
+
+    nav ul li a {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}
+
+/* ---------- Hero Section Centered ---------- */
+#hero {
+    display: flex;
+    justify-content: center; /* Horizontal center */
+    align-items: center;     /* Vertical center */
+    padding: 80px 20px;      /* Top/Bottom and horizontal spacing */
+    min-height: 80vh;        /* Make hero take most of the viewport */
+    gap: 40px;               /* Space between image and text box */
 }
 
 .hero-content {
     display: flex;
-    width: 100%;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: center; /* Center content horizontally if wrapped */
+    gap: 30px;
 }
 
+/* Hero Image */
 .hero-image {
-    width: 320px;
-    height: 420px;
+    width: 300px;
+    height: 400px;
     object-fit: cover;
     border-radius: var(--border-radius);
-    flex-shrink: 0;
     box-shadow: var(--shadow);
+    flex-shrink: 0;
 }
 
-/* Hero Text Box - Premium Dark Mode */
+/* Hero Text Box */
 .hero-text-box {
-    background: rgba(30, 30, 30, 0.85);
+    background: rgba(38, 38, 38, 0.95);
+    color: var(--text);
+    padding: 40px 35px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--floating-shadow);
+    max-width: 500px;
+    width: 100%;
+    transition: var(--transition);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+/* Responsive for Mobile */
+@media (max-width: 768px) {
+    #hero {
+        flex-direction: column; /* Stack vertically */
+        text-align: center;
+        min-height: auto;
+        padding: 60px 20px;
+    }
+
+    .hero-image {
+        width: 250px;
+        height: 330px;
+    }
+
+    .hero-text-box {
+        max-width: 90%;
+        padding: 30px 25px;
+    }
+
+    .hero-text-box h1 {
+        font-size: 2rem;
+    }
+
+    .hero-text-box p {
+        font-size: 1.1rem;
+    }
+
+    .hero-quote {
+        font-size: 1rem;
+    }
+}
+
+
+/* -------- Hero Text Box - Sweet Perfect Size -------- */
+.hero-text-box {
+    background: rgba(38, 38, 38, 0.95);
     /* Dark premium background */
     color: var(--text);
-    padding: 60px;
+    padding: 40px 35px;
+    /* Comfortable padding */
     border-radius: var(--border-radius);
     box-shadow: var(--floating-shadow);
     position: relative;
     overflow: hidden;
-    margin-left: 30px;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(212, 175, 55, 0.15);
+    max-width: 500px;
+    /* Sweet width for readability */
+    width: 100%;
     transition: var(--transition);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+/* Dark Mode Premium Hover & Floating Effect */
+body:not(.light-mode) .hero-text-box:hover,
+body:not(.light-mode) .hero-text-box:active {
+    background: rgba(212, 175, 55, 0.08);
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(212, 175, 55, 0.25);
+    transform: translateY(-6px) scale(1.02);
+    border-color: rgba(212, 175, 55, 0.25);
+}
+
+/* Light Mode Hover */
+body.light-mode .hero-text-box:hover,
+body.light-mode .hero-text-box:active {
+    background: rgba(177, 156, 217, 0.08);
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(177, 156, 217, 0.2);
+    transform: translateY(-4px) scale(1.01);
+    border-color: rgba(177, 156, 217, 0.2);
+}
+
+/* Hero Text Content Styling */
+.hero-text-box h1 {
+    font-size: 2.8rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--text);
+}
+
+.hero-text-box p {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-bottom: 18px;
+}
+
+.hero-quote {
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* Responsive for Mobile */
+@media (max-width: 768px) {
+    .hero-text-box {
+        max-width: 90%;
+        padding: 30px 25px;
+        margin: 0 auto;
+    }
+
+    .hero-text-box h1 {
+        font-size: 2rem;
+    }
+
+    .hero-text-box p {
+        font-size: 1.1rem;
+    }
+
+    .hero-quote {
+        font-size: 1rem;
+    }
 }
 
 /* Dark Mode Premium Hover & Floating Effect */
@@ -242,19 +505,38 @@ body:not(.light-mode) footer a:active {
 
 /* Hero Text Box - Premium Dark Mode */
 .hero-text-box {
-    background: rgb(38, 38, 38);
-    /* Updated dark premium background */
+    background: rgba(38, 38, 38, 0.95);
     color: var(--text);
-    padding: 60px;
+    padding: 30px 25px; /* slightly smaller padding */
     border-radius: var(--border-radius);
     box-shadow: var(--floating-shadow);
-    position: relative;
-    overflow: hidden;
-    margin-left: 30px;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(212, 175, 55, 0.15);
+    max-width: 420px; /* reduced width */
+    width: 100%;
     transition: var(--transition);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    text-align: center;
 }
+
+.hero-text-box h1 {
+    font-size: 2.6rem; /* slightly smaller heading */
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.hero-text-box p {
+    font-size: 1.2rem; /* slightly smaller paragraph */
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-bottom: 18px;
+}
+
+.hero-quote {
+    font-size: 1.1rem; /* slightly smaller quote */
+    font-style: italic;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
 
 /* Dark Mode Premium Hover & Floating Effect */
 body:not(.light-mode) .hero-text-box:hover,
