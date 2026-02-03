@@ -1,14 +1,10 @@
 /* CSS Variables for Themes */
 :root {
-    /* Dark Mode (Default - Minimal Dark Luxury) */
+    /* Dark Mode (Default - Minimal Dark Luxury) - Unchanged */
     --bg: #1a1a1a;
-    /* Dark matte */
     --text: #f0f0f0;
-    /* Soft off-white */
     --text-muted: #b0b0b0;
-    /* Light gray */
     --accent: #d4af37;
-    /* Muted gold */
     --shadow: rgba(0, 0, 0, 0.3);
     --floating-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
     --border-radius: 6px;
@@ -19,27 +15,31 @@
     --gray: #2a2a2a;
 }
 
-/* Light Mode (Smoky and Cloudy White) */
+/* Light Mode (Glow Lite - Calm, Modern, Subtle) */
 body.light-mode {
-    --bg: #f5f5f5;
-    /* Smoky white background */
-    --text: #333333;
-    /* Dark gray text for contrast */
-    --text-muted: #7a7a7a;
+    --bg: #fafafa;
+    /* Soft off-white background for calmness */
+    --text: #2c2c2c;
+    /* Deep gray text for eye comfort */
+    --text-muted: #6b6b6b;
     /* Muted gray for secondary text */
-    --accent: #8a8a8a;
-    /* Soft gray accent for smoky feel */
-    --shadow: rgba(0, 0, 0, 0.1);
-    /* Light shadow for cloudiness */
-    --floating-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-    /* Subtle floating shadow */
-    --nav-text: #333333;
-    --nav-hover: #555555;
-    /* Muted hover for smoky effect */
-    --nav-bg: #e8e8e8;
-    /* Cloudy gray nav background */
-    --gray: #d1d1d1;
-    /* Light gray for borders */
+    --accent: #b19cd9;
+    /* Soft lavender for subtle glow */
+    --shadow: rgba(0, 0, 0, 0.05);
+    /* Extremely soft shadow */
+    --floating-shadow: 0 8px 20px rgba(177, 156, 217, 0.1);
+    /* Diffused glow shadow with accent */
+    --border-radius: 8px;
+    /* Slightly rounded corners */
+    --transition: all 0.6s ease;
+    /* Slow, smooth transitions for breathing feel */
+    --nav-text: #2c2c2c;
+    --nav-hover: #8a7ba8;
+    /* Muted lavender hover */
+    --nav-bg: #f0f0f0;
+    /* Light, cloudy nav background */
+    --gray: #e0e0e0;
+    /* Subtle gray for borders */
 }
 
 /* Reset and base styles */
@@ -52,6 +52,7 @@ body.light-mode {
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.7;
+    /* Loose line height for calmness */
     color: var(--text);
     background: var(--bg);
     min-height: 100vh;
@@ -60,7 +61,6 @@ body {
     overflow-x: hidden;
     animation: fadeIn 1.2s ease-in;
     transition: background 0.4s ease, color 0.4s ease;
-    /* Smooth theme transition */
 }
 
 @keyframes fadeIn {
@@ -88,18 +88,15 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* Toggle on left, menu on right */
 }
 
 /* Theme Toggle Slider */
 .theme-toggle {
     margin-left: 20px;
-    /* Position in left corner */
 }
 
 #theme-switch {
     display: none;
-    /* Hide checkbox */
 }
 
 .toggle-slider {
@@ -130,7 +127,6 @@ nav {
 
 #theme-switch:checked+.toggle-slider::before {
     transform: translateX(30px);
-    /* Slide to right for light mode */
 }
 
 .icon {
@@ -141,28 +137,22 @@ nav {
 
 .sun {
     opacity: 0;
-    /* Hidden in dark mode */
     transform: rotate(0deg);
 }
 
 .moon {
     opacity: 1;
-    /* Visible in dark mode */
     transform: rotate(0deg);
 }
 
 #theme-switch:checked+.toggle-slider .sun {
     opacity: 1;
-    /* Visible in light mode */
     transform: rotate(360deg);
-    /* Animation to sun */
 }
 
 #theme-switch:checked+.toggle-slider .moon {
     opacity: 0;
-    /* Hidden in light mode */
     transform: rotate(-360deg);
-    /* Animation to moon */
 }
 
 nav ul {
@@ -173,7 +163,6 @@ nav ul {
     margin: 0;
     padding: 0;
     flex: 1;
-    /* Take remaining space */
 }
 
 nav ul li a {
@@ -181,21 +170,32 @@ nav ul li a {
     color: var(--nav-text);
     font-size: 1.15rem;
     font-weight: 500;
+    /* Medium weight for headings */
     padding: 12px 24px;
-    border-radius: 25px;
+    border-radius: var(--border-radius);
     display: flex;
     align-items: center;
     gap: 10px;
     position: relative;
     transition: var(--transition);
+    border: 1px solid transparent;
+    /* For hover border */
 }
 
-nav ul li a:hover {
+nav ul li a:hover,
+nav ul li a:active {
+    /* Added :active for touch devices */
     color: var(--nav-hover);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    /* Gentle lift */
+    box-shadow: 0 4px 12px rgba(177, 156, 217, 0.15);
+    /* Soft glow shadow */
+    border-color: rgba(177, 156, 217, 0.3);
+    /* Low-opacity border */
 }
 
-nav ul li a:hover::after {
+nav ul li a:hover::after,
+nav ul li a:active::after {
     content: '';
     position: absolute;
     bottom: -8px;
@@ -204,7 +204,8 @@ nav ul li a:hover::after {
     width: 0;
     height: 2px;
     background: var(--nav-hover);
-    animation: underline 0.4s ease forwards;
+    animation: underline 0.6s ease forwards;
+    /* Slow transition */
 }
 
 @keyframes underline {
@@ -231,16 +232,33 @@ header {
     padding: 100px 0;
     background: var(--bg);
     margin-bottom: 100px;
+    border-radius: var(--border-radius);
+    border: 1px solid transparent;
+    /* For hover border */
+    transition: var(--transition);
+}
+
+header:hover,
+header:active {
+    /* Added :active for touch */
+    transform: translateY(-3px);
+    /* Gentle lift */
+    box-shadow: 0 6px 18px rgba(177, 156, 217, 0.2);
+    /* Soft glow shadow */
+    border-color: rgba(177, 156, 217, 0.4);
+    /* Low-opacity border */
 }
 
 header h1 {
     font-size: 3.5rem;
-    font-weight: 700;
+    font-weight: 600;
+    /* Medium weight */
     margin-bottom: 25px;
     position: relative;
     display: inline-block;
     color: var(--text);
-    text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+    text-shadow: 0 0 10px rgba(177, 156, 217, 0.2);
+    /* Subtle glow */
 }
 
 header h1::after {
@@ -254,13 +272,15 @@ header h1::after {
     transition: var(--transition);
 }
 
-header:hover h1::after {
+header:hover h1::after,
+header:active h1::after {
     width: 100%;
 }
 
 header p {
     font-size: 1.6rem;
     font-weight: 300;
+    /* Light weight */
     color: var(--text-muted);
 }
 
@@ -273,34 +293,44 @@ main {
 section {
     flex: 1;
     min-width: 450px;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(250, 250, 250, 0.9);
+    /* Subtle light background for separation */
     padding: 60px;
-    border-radius: 10px;
+    /* Generous padding */
+    border-radius: var(--border-radius);
     box-shadow: var(--floating-shadow);
     transition: var(--transition);
     backdrop-filter: blur(5px);
+    border: 1px solid transparent;
+    /* For hover border */
 }
 
-section:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+section:hover,
+section:active {
+    /* Added :active for touch; applies to #journey and #mindset */
+    transform: translateY(-3px);
+    /* Gentle lift */
+    box-shadow: 0 6px 18px rgba(177, 156, 217, 0.2);
+    /* Enhanced soft glow */
+    border-color: rgba(177, 156, 217, 0.4);
+    /* Low-opacity border */
 }
 
-/* Dim Lighting Effect for Dark Theme on Hover (for sections with id="journey" and id="mindset") */
+/* Dim Lighting Effect for Dark Theme on Hover (for sections with id="journey" and id="mindset") - Unchanged for dark mode */
 body:not(.light-mode) #journey:hover,
 body:not(.light-mode) #mindset:hover {
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(212, 175, 55, 0.4);
-    /* Adds a soft gold glow for dim lighting */
     filter: brightness(1.05);
-    /* Slight brightness increase for lighting effect */
 }
 
 footer {
     text-align: center;
-    padding: 30px;
-    background: rgba(255, 255, 255, 0.05);
+    padding: 40px;
+    /* Generous spacing */
+    background: rgba(250, 250, 250, 0.95);
     color: var(--text-muted);
     font-size: 0.95rem;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
 
 /* Add transitions to all elements for smooth theme switch */
