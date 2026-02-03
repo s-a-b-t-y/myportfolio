@@ -278,53 +278,12 @@ section:hover {
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
 }
 
-/* Dark Theme Specific for #journey and #mindset: Dark Background and Extraordinary Hover */
-body:not(.light-mode) #journey,
-body:not(.light-mode) #mindset {
-    background: #1a1a1a; /* Pure dark background for immersion */
-    position: relative;
-    overflow: hidden; /* For pseudo-element */
-}
-
-body:not(.light-mode) #journey:hover,
-body:not(.light-mode) #mindset:hover,
-body:not(.light-mode) #journey:active,
-body:not(.light-mode) #mindset:active {
-    transform: translateY(-5px) scale(1.02); /* Gentle lift and subtle scale for depth */
-    box-shadow: 0 15px 40px rgba(0, 123, 255, 0.4); /* Electric blue glow for extraordinary effect */
-}
-
-body:not(.light-mode) #journey:hover::before,
-body:not(.light-mode) #mindset:hover::before,
-body:not(.light-mode) #journey:active::before,
-body:not(.light-mode) #mindset:active::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border: 2px solid rgba(0, 123, 255, 0.6); /* Expanding electric blue border */
-    border-radius: 10px;
-    animation: borderGlow 0.6s ease-in-out infinite alternate; /* Pulsing animation for niche feel */
-    pointer-events: none;
-}
-
-@keyframes borderGlow {
-    0% {
-        opacity: 0.3;
-        transform: scale(0.98);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1.02);
-    }
-}
+/* Removed special dark theme styles for #journey and #mindset - reverted to original */
 
 footer {
     text-align: center;
     padding: 40px;
-    background: rgba(250, 250, 250, 0.95);
+    background: var(--bg); /* Now dark in dark mode for consistency */
     color: var(--text-muted);
     font-size: 0.95rem;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
