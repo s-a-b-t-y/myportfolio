@@ -290,7 +290,8 @@ section:hover {
 /* Dark Mode Minimalist Enhancement for Sections #journey and #mindset */
 body:not(.light-mode) #journey,
 body:not(.light-mode) #mindset {
-    border-radius: 0; /* Flat edges for minimalism, matching footer */
+    border-radius: 0;
+    /* Flat edges for minimalism, matching footer */
 }
 
 footer {
@@ -372,4 +373,21 @@ body:not(.light-mode) footer {
         padding-left: 15px;
         padding-right: 15px;
     }
+}
+
+/* Premium Minimalist Dark Footer */
+body:not(.light-mode) footer {
+    background: #141414;
+    /* Slightly darker than body */
+    color: #8a8a8a;
+    /* Soft muted gray (not white) */
+    border-top: 1px solid #242424;
+    /* Subtle separator */
+    box-shadow: none;
+}
+
+/* Footer text refinement */
+body:not(.light-mode) footer p {
+    font-weight: 300;
+    letter-spacing: 0.4px;
 }
