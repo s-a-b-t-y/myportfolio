@@ -1,17 +1,25 @@
 /* CSS Variables for Themes */
 :root {
     /* Dark Mode (Minimalist - Simplified from Minimal Dark Luxury) */
-    --bg: #1a1a1a; /* Matte dark background */
-    --text: #f0f0f0; /* Clean off-white text */
-    --text-muted: #b0b0b0; /* Subtle gray */
-    --accent: #d4af37; /* Muted gold, kept minimal */
-    --shadow: rgba(0, 0, 0, 0.2); /* Softer shadow */
-    --floating-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); /* Reduced intensity for minimalism */
+    --bg: #1a1a1a;
+    /* Matte dark background */
+    --text: #f0f0f0;
+    /* Clean off-white text */
+    --text-muted: #b0b0b0;
+    /* Subtle gray */
+    --accent: #d4af37;
+    /* Muted gold, kept minimal */
+    --shadow: rgba(0, 0, 0, 0.2);
+    /* Softer shadow */
+    --floating-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    /* Reduced intensity for minimalism */
     --border-radius: 6px;
     --transition: all 0.4s ease;
     --nav-text: #f0f0f0;
-    --nav-hover: #d4af37; /* Muted hover */
-    --nav-bg: #1a1a1a; /* Flat nav */
+    --nav-hover: #d4af37;
+    /* Muted hover */
+    --nav-bg: #1a1a1a;
+    /* Flat nav */
     --gray: #2a2a2a;
 }
 
@@ -56,6 +64,7 @@ body {
         opacity: 0;
         transform: translateY(10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -278,15 +287,24 @@ section:hover {
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
 }
 
-/* Removed special dark theme styles for #journey and #mindset - reverted to original */
-
 footer {
     text-align: center;
     padding: 40px;
-    background: var(--bg); /* Now dark in dark mode for consistency */
+    background: var(--bg);
+    /* Now dark in dark mode for consistency */
     color: var(--text-muted);
     font-size: 0.95rem;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+/* Dark Mode Minimalist Enhancement for Footer */
+body:not(.light-mode) footer {
+    border-radius: 0;
+    /* Flat edges for minimalism */
+    border: none;
+    /* Remove any borders for a clean, flat look */
+    box-shadow: none;
+    /* No shadows for simplicity */
 }
 
 /* Add transitions to all elements for smooth theme switch */
