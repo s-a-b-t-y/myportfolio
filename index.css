@@ -1,6 +1,6 @@
 /* CSS Variables for Themes */
 :root {
-    /* Dark Mode (Default - Minimal Dark Luxury) - Unchanged */
+    /* Dark Mode (Default - Minimal Dark Luxury) */
     --bg: #1a1a1a;
     --text: #f0f0f0;
     --text-muted: #b0b0b0;
@@ -15,20 +15,20 @@
     --gray: #2a2a2a;
 }
 
-/* Light Mode (Glow Lite - Calm, Modern, Subtle) */
+/* Light Mode (Glow Lite) */
 body.light-mode {
-    --bg: #fafafa; /* Soft off-white background for calmness */
-    --text: #2c2c2c; /* Deep gray text for eye comfort */
-    --text-muted: #6b6b6b; /* Muted gray for secondary text */
-    --accent: #b19cd9; /* Soft lavender for subtle glow */
-    --shadow: rgba(0, 0, 0, 0.05); /* Extremely soft shadow */
-    --floating-shadow: 0 8px 20px rgba(177, 156, 217, 0.1); /* Diffused glow shadow with accent */
-    --border-radius: 8px; /* Slightly rounded corners */
-    --transition: all 0.6s ease; /* Slow, smooth transitions for breathing feel */
+    --bg: #fafafa;
+    --text: #2c2c2c;
+    --text-muted: #6b6b6b;
+    --accent: #b19cd9;
+    --shadow: rgba(0, 0, 0, 0.05);
+    --floating-shadow: 0 8px 20px rgba(177, 156, 217, 0.1);
+    --border-radius: 8px;
+    --transition: all 0.6s ease;
     --nav-text: #2c2c2c;
-    --nav-hover: #8a7ba8; /* Muted lavender hover */
-    --nav-bg: #f0f0f0; /* Light, cloudy nav background */
-    --gray: #e0e0e0; /* Subtle gray for borders */
+    --nav-hover: #8a7ba8;
+    --nav-bg: #f0f0f0;
+    --gray: #e0e0e0;
 }
 
 /* Reset and base styles */
@@ -40,7 +40,7 @@ body.light-mode {
 
 body {
     font-family: 'Inter', sans-serif;
-    line-height: 1.7; /* Loose line height for calmness */
+    line-height: 1.7;
     color: var(--text);
     background: var(--bg);
     min-height: 100vh;
@@ -56,6 +56,7 @@ body {
         opacity: 0;
         transform: translateY(10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -142,6 +143,7 @@ nav {
     transform: rotate(-360deg);
 }
 
+/* Navbar Links */
 nav ul {
     list-style: none;
     display: flex;
@@ -156,7 +158,7 @@ nav ul li a {
     text-decoration: none;
     color: var(--nav-text);
     font-size: 1.15rem;
-    font-weight: 500; /* Medium weight for headings */
+    font-weight: 500;
     padding: 12px 24px;
     border-radius: var(--border-radius);
     display: flex;
@@ -164,15 +166,15 @@ nav ul li a {
     gap: 10px;
     position: relative;
     transition: var(--transition);
-    border: 1px solid transparent; /* For hover border */
+    border: 1px solid transparent;
 }
 
 nav ul li a:hover,
-nav ul li a:active { /* Added :active for touch devices */
+nav ul li a:active {
     color: var(--nav-hover);
-    transform: translateY(-3px); /* Gentle lift */
-    box-shadow: 0 4px 12px rgba(177, 156, 217, 0.15); /* Soft glow shadow */
-    border-color: rgba(177, 156, 217, 0.3); /* Low-opacity border */
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(177, 156, 217, 0.15);
+    border-color: rgba(177, 156, 217, 0.3);
 }
 
 nav ul li a:hover::after,
@@ -185,7 +187,7 @@ nav ul li a:active::after {
     width: 0;
     height: 2px;
     background: var(--nav-hover);
-    animation: underline 0.6s ease forwards; /* Slow transition */
+    animation: underline 0.6s ease forwards;
 }
 
 @keyframes underline {
@@ -194,11 +196,7 @@ nav ul li a:active::after {
     }
 }
 
-nav ul li a svg {
-    flex-shrink: 0;
-}
-
-/* Container for centered layout */
+/* Container */
 .container {
     max-width: 1100px;
     margin: 0 auto;
@@ -231,60 +229,79 @@ nav ul li a svg {
     box-shadow: var(--shadow);
 }
 
+/* Hero Text Box */
 .hero-text-box {
-    background: rgba(250, 250, 250, 0.9); /* Subtle light background for separation */
-    padding: 60px; /* Generous padding */
+    background: rgba(250, 250, 250, 0.9);
+    padding: 60px;
     border-radius: var(--border-radius);
     box-shadow: var(--floating-shadow);
     position: relative;
     overflow: hidden;
     margin-left: 30px;
     backdrop-filter: blur(5px);
-    border: 1px solid transparent; /* For hover border */
+    border: 1px solid transparent;
     transition: var(--transition);
 }
 
-.hero-text-box:hover,
-.hero-text-box:active { /* Added :active for touch */
-    transform: translateY(-3px); /* Gentle lift */
-    box-shadow: 0 6px 18px rgba(177, 156, 217, 0.2); /* Enhanced soft glow */
-    border-color: rgba(177, 156, 217, 0.4); /* Low-opacity border */
+/* Premium Dark Mode Hover & Floating Effect */
+body:not(.light-mode) .hero-text-box:hover,
+body:not(.light-mode) .hero-text-box:active {
+    background: rgba(212, 175, 55, 0.08);
+    /* Soft gold glow */
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(212, 175, 55, 0.2);
+    transform: translateY(-8px) scale(1.02);
+    /* Floating lift effect */
+    border-color: rgba(212, 175, 55, 0.25);
 }
 
-.hero-text-box::before {
+/* Premium Light Mode Hover & Floating */
+body.light-mode .hero-text-box:hover,
+body.light-mode .hero-text-box:active {
+    background: rgba(177, 156, 217, 0.08);
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(177, 156, 217, 0.2);
+    transform: translateY(-6px) scale(1.01);
+    border-color: rgba(177, 156, 217, 0.2);
+}
+
+/* Subtle Floating Accent Line in Dark Mode */
+body:not(.light-mode) .hero-text-box::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at center, rgba(177, 156, 217, 0.1) 0%, rgba(177, 156, 217, 0.05) 50%, transparent 100%);
-    pointer-events: none;
-    animation: flicker 4s ease-in-out infinite;
+    height: 100%;
+    width: 2px;
+    background: linear-gradient(to bottom,
+            transparent,
+            rgba(212, 175, 55, 0.6),
+            transparent);
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
-@keyframes flicker {
-    0%, 100% {
-        opacity: 0.8;
-    }
-    50% {
-        opacity: 1;
-    }
+body:not(.light-mode) .hero-text-box:hover::before,
+body:not(.light-mode) .hero-text-box:active::before {
+    opacity: 1;
 }
 
+/* Hero Text Content */
 .hero-text-box h1 {
     font-size: 3.2rem;
-    font-weight: 600; /* Medium weight */
+    font-weight: 600;
     margin-bottom: 15px;
     color: var(--text);
-    text-shadow: 0 0 10px rgba(177, 156, 217, 0.2); /* Subtle glow */
+    text-shadow: 0 0 10px rgba(177, 156, 217, 0.2);
     position: relative;
     z-index: 1;
 }
 
 .hero-text-box p {
     font-size: 1.4rem;
-    font-weight: 400; /* Regular weight */
+    font-weight: 400;
     color: var(--text-muted);
     margin-bottom: 25px;
     position: relative;
@@ -303,7 +320,7 @@ nav ul li a svg {
 /* Footer */
 footer {
     text-align: center;
-    padding: 40px; /* Generous spacing */
+    padding: 40px;
     background: rgba(250, 250, 250, 0.95);
     color: var(--text-muted);
     font-size: 0.95rem;
@@ -314,21 +331,21 @@ footer a {
     color: var(--accent);
     text-decoration: none;
     transition: var(--transition);
-    border: 1px solid transparent; /* For hover border */
+    border: 1px solid transparent;
 }
 
 footer a:hover,
-footer a:active { /* Added :active for touch */
+footer a:active {
     text-decoration: underline;
     color: var(--text);
-    transform: translateY(-2px); /* Gentle lift */
-    box-shadow: 0 3px 10px rgba(177, 156, 217, 0.1); /* Soft glow */
-    border-color: rgba(177, 156, 217, 0.2); /* Low-opacity border */
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(177, 156, 217, 0.1);
+    border-color: rgba(177, 156, 217, 0.2);
 }
 
-/* Add transitions to all elements for smooth theme switch */
+/* Smooth theme transitions */
 * {
-    transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
 }
 
 /* Responsive Design */
@@ -368,7 +385,7 @@ footer a:active { /* Added :active for touch */
 
     .hero-text-box {
         margin-left: 0;
-        padding: 40px; /* Adjusted for mobile */
+        padding: 40px;
     }
 
     .hero-text-box h1 {
