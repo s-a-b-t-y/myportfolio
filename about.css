@@ -391,3 +391,64 @@ body:not(.light-mode) footer p {
     font-weight: 300;
     letter-spacing: 0.4px;
 }
+
+/* Premium Yellowish Hover for Reading Focus */
+#journey,
+#mindset {
+    position: relative;
+    transition:
+        background 0.5s ease,
+        box-shadow 0.5s ease,
+        border-color 0.5s ease,
+        transform 0.5s ease;
+}
+
+/* Premium Yellowish Hover for Reading Focus */
+#journey,
+#mindset {
+    position: relative;
+    transition: 
+        background 0.5s ease,
+        box-shadow 0.5s ease,
+        border-color 0.5s ease,
+        transform 0.5s ease;
+}
+
+/* Dark Mode Premium Gold Hover */
+body:not(.light-mode) #journey:hover,
+body:not(.light-mode) #mindset:hover,
+body:not(.light-mode) #journey:active,
+body:not(.light-mode) #mindset:active {
+    background: rgba(212, 175, 55, 0.05); /* Soft muted gold wash */
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(212, 175, 55, 0.25); /* Hairline gold border */
+    transform: translateY(-6px);
+}
+
+/* Subtle Gold Accent Line (Luxury Touch) */
+body:not(.light-mode) #journey::before,
+body:not(.light-mode) #mindset::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 2px;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(212, 175, 55, 0.6),
+        transparent
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* Show accent line on hover */
+body:not(.light-mode) #journey:hover::before,
+body:not(.light-mode) #mindset:hover::before,
+body:not(.light-mode) #journey:active::before,
+body:not(.light-mode) #mindset:active::before {
+    opacity: 1;
+}
