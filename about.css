@@ -15,31 +15,20 @@
     --gray: #2a2a2a;
 }
 
-/* Light Mode (Glow Lite - Calm, Modern, Subtle) */
+/* Light Mode (Glow Lite - Applied to nav, header, footer; Sections reverted to original smoky/cloudy) */
 body.light-mode {
-    --bg: #fafafa;
-    /* Soft off-white background for calmness */
-    --text: #2c2c2c;
-    /* Deep gray text for eye comfort */
-    --text-muted: #6b6b6b;
-    /* Muted gray for secondary text */
-    --accent: #b19cd9;
-    /* Soft lavender for subtle glow */
-    --shadow: rgba(0, 0, 0, 0.05);
-    /* Extremely soft shadow */
-    --floating-shadow: 0 8px 20px rgba(177, 156, 217, 0.1);
-    /* Diffused glow shadow with accent */
-    --border-radius: 8px;
-    /* Slightly rounded corners */
-    --transition: all 0.6s ease;
-    /* Slow, smooth transitions for breathing feel */
+    --bg: #fafafa; /* Soft off-white for Glow Lite */
+    --text: #2c2c2c; /* Deep gray for Glow Lite */
+    --text-muted: #6b6b6b; /* Muted gray for Glow Lite */
+    --accent: #b19cd9; /* Soft lavender for Glow Lite */
+    --shadow: rgba(0, 0, 0, 0.05); /* Soft shadow for Glow Lite */
+    --floating-shadow: 0 8px 20px rgba(177, 156, 217, 0.1); /* Diffused glow for Glow Lite */
+    --border-radius: 8px; /* Rounded for Glow Lite */
+    --transition: all 0.6s ease; /* Slow transitions for Glow Lite */
     --nav-text: #2c2c2c;
-    --nav-hover: #8a7ba8;
-    /* Muted lavender hover */
-    --nav-bg: #f0f0f0;
-    /* Light, cloudy nav background */
-    --gray: #e0e0e0;
-    /* Subtle gray for borders */
+    --nav-hover: #8a7ba8; /* Muted lavender hover for Glow Lite */
+    --nav-bg: #f0f0f0; /* Light nav for Glow Lite */
+    --gray: #e0e0e0; /* Subtle gray for Glow Lite */
 }
 
 /* Reset and base styles */
@@ -52,7 +41,6 @@ body.light-mode {
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.7;
-    /* Loose line height for calmness */
     color: var(--text);
     background: var(--bg);
     min-height: 100vh;
@@ -68,7 +56,6 @@ body {
         opacity: 0;
         transform: translateY(10px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -170,7 +157,6 @@ nav ul li a {
     color: var(--nav-text);
     font-size: 1.15rem;
     font-weight: 500;
-    /* Medium weight for headings */
     padding: 12px 24px;
     border-radius: var(--border-radius);
     display: flex;
@@ -179,19 +165,14 @@ nav ul li a {
     position: relative;
     transition: var(--transition);
     border: 1px solid transparent;
-    /* For hover border */
 }
 
 nav ul li a:hover,
 nav ul li a:active {
-    /* Added :active for touch devices */
     color: var(--nav-hover);
     transform: translateY(-3px);
-    /* Gentle lift */
     box-shadow: 0 4px 12px rgba(177, 156, 217, 0.15);
-    /* Soft glow shadow */
     border-color: rgba(177, 156, 217, 0.3);
-    /* Low-opacity border */
 }
 
 nav ul li a:hover::after,
@@ -205,7 +186,6 @@ nav ul li a:active::after {
     height: 2px;
     background: var(--nav-hover);
     animation: underline 0.6s ease forwards;
-    /* Slow transition */
 }
 
 @keyframes underline {
@@ -234,31 +214,24 @@ header {
     margin-bottom: 100px;
     border-radius: var(--border-radius);
     border: 1px solid transparent;
-    /* For hover border */
     transition: var(--transition);
 }
 
 header:hover,
 header:active {
-    /* Added :active for touch */
     transform: translateY(-3px);
-    /* Gentle lift */
     box-shadow: 0 6px 18px rgba(177, 156, 217, 0.2);
-    /* Soft glow shadow */
     border-color: rgba(177, 156, 217, 0.4);
-    /* Low-opacity border */
 }
 
 header h1 {
     font-size: 3.5rem;
     font-weight: 600;
-    /* Medium weight */
     margin-bottom: 25px;
     position: relative;
     display: inline-block;
     color: var(--text);
     text-shadow: 0 0 10px rgba(177, 156, 217, 0.2);
-    /* Subtle glow */
 }
 
 header h1::after {
@@ -280,7 +253,6 @@ header:active h1::after {
 header p {
     font-size: 1.6rem;
     font-weight: 300;
-    /* Light weight */
     color: var(--text-muted);
 }
 
@@ -293,30 +265,20 @@ main {
 section {
     flex: 1;
     min-width: 450px;
-    background: rgba(250, 250, 250, 0.9);
-    /* Subtle light background for separation */
+    background: rgba(255, 255, 255, 0.05); /* Reverted to original for both modes */
     padding: 60px;
-    /* Generous padding */
-    border-radius: var(--border-radius);
+    border-radius: 10px;
     box-shadow: var(--floating-shadow);
     transition: var(--transition);
     backdrop-filter: blur(5px);
-    border: 1px solid transparent;
-    /* For hover border */
 }
 
-section:hover,
-section:active {
-    /* Added :active for touch; applies to #journey and #mindset */
-    transform: translateY(-3px);
-    /* Gentle lift */
-    box-shadow: 0 6px 18px rgba(177, 156, 217, 0.2);
-    /* Enhanced soft glow */
-    border-color: rgba(177, 156, 217, 0.4);
-    /* Low-opacity border */
+section:hover {
+    transform: translateY(-8px); /* Reverted to original hover for both modes */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
 }
 
-/* Dim Lighting Effect for Dark Theme on Hover (for sections with id="journey" and id="mindset") - Unchanged for dark mode */
+/* Dim Lighting Effect for Dark Theme on Hover (for sections with id="journey" and id="mindset") - Unchanged */
 body:not(.light-mode) #journey:hover,
 body:not(.light-mode) #mindset:hover {
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(212, 175, 55, 0.4);
@@ -326,7 +288,6 @@ body:not(.light-mode) #mindset:hover {
 footer {
     text-align: center;
     padding: 40px;
-    /* Generous spacing */
     background: rgba(250, 250, 250, 0.95);
     color: var(--text-muted);
     font-size: 0.95rem;
